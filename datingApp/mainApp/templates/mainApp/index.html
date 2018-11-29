@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ appname }}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'mainApp/styles.css' %}" />
+   <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+</head>
+<body>
+	<center>
+	<canvas id='logo' width='624' height='96'> {{ appname }} </canvas>
+	</center>
+	{% if loggedin %}
+    <div class='appname'>{{ appname }} ({{ username }}) </div>
+	{% else %}
+    <div class='appname'>{{ appname }}</div>
+   {% endif %}
+	<br>
+	<ul class='menu'>
+		{% if loggedin %}
+		  <li><a href="{% url 'messages' %}">Messages</a></li>
+        <li><a href="{% url 'members' %}">Members</a></li>
+        <li><a href="{% url 'friends' %}">Friends</a></li>
+        <li><a href="{% url 'profile' %}">Edit Profile</a></li>
+        <li><a href="{% url 'logout' %}">Log out</a></li>
+		{% else %}
+		  <li><a href="{% url 'signup' %}">Sign up</a></li>
+		  <li><a href="{% url 'login' %}">Log in</a></li>
+		{% endif %}
+	</ul>
+	<br>
+	{% block content %}
+	{% endblock %}
+	<br>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="{% static 'mainApp/scripts.js' %}"></script>
+	<script src="{% static 'mainApp/file_upload.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends "mainApp/index.html" %}
+{% load staticfiles %}
+
+{% block content %}
+   
+      <h3>Please enter your details to sign up</h3>
+      <form method='POST' action="{% url 'register' %}">
+      	{% csrf_token %}
+         <span class='fieldname'>Username</span>
+         <input type='text' maxlength='16' id='regusername' name='username'>
+            <span id='info'></span>
+            <br>
+            <span class='fieldname'>Password</span>
+            <input type='password' maxlength='16' name='password'><br>
+            <span class='fieldname'>&nbsp;</span>
+         <input type='submit' value='Sign up'>
+      </form>
+   
+{% endblock %}
