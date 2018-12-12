@@ -1,0 +1,46 @@
+<!-- template /products/index.html -->
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head><title>ProductsList</title></head>
+    <body>
+
+      <h1>Products</h1>
+      <ul id="showProducts">
+        {% for product in product_list %}
+          <li class="li" id="{{product.id}}">{{product.name}}<button class="delete" type="button">Delete</button></li>
+        {% endfor %}
+      </ul>
+	  
+      <h1 class="existingProd">Update Product</h1>
+      <br>
+	  Name <input type="text" id="updateName">
+      </br>
+      <br>
+	  Description <input type="text" id="updateDescription">
+      </br>
+	  <br>
+      Price <input type="text" id="updatePrice">
+      </br>
+	  <br>
+      <button id="update" type="button">Update</button>
+      </br>
+	  
+      <h1>Add a Product</h1>
+	  <br>
+      Name <input id="name" type="text">
+      </br>
+	  <br>
+      Description <input id="description" type="text">
+      </br>
+	  <br>
+      Price <input id="price" type="text">
+      </br>
+	  <br>
+      <button id="create" type="button">Add</button>
+      </br>
+	  
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="{% static 'products/scripts.js' %}"></script>
+    </body>
+</html>
