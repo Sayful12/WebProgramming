@@ -1,0 +1,59 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ appname }}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  -->
+  <link rel="stylesheet" type="text/css" href="{% static 'mainapp/signin.css' %}"  />
+	<!--<link rel="stylesheet" type="text/css" href="{% static 'mainapp/styles.css' %}" />-->
+</head>
+<body>
+  <div class="container">
+    <div class ="text-center">
+
+  	<canvas id='logo' width='624' height='96'> {{ appname }} </canvas>
+  	{% if loggedin %}
+      <div class='appname'>{{ appname }} ({{ username }}) </div>
+  	{% else %}
+
+      <h1 class="h3 mb-3 font-weight-normal">{{ appname }}</h1>
+      <!--<div class='appname'>{{ appname }}</div>-->
+     {% endif %}
+  	<br>
+  	<ul class='menu'>
+  		{% if loggedin %}
+      <p> user is logged in </p>
+      <!--
+  		  <li><a href="{% url 'messages' %}">Messages</a></li>
+          <li><a href="{% url 'members' %}">Members</a></li>
+          <li><a href="{% url 'friends' %}">Friends</a></li>
+          <li><a href="{% url 'profile' %}">Edit Profile</a></li>
+          <li><a href="{% url 'logout' %}">Log out</a></li>-->
+  		{% else %}
+      <div class="btn-group">
+      <form class="form-signin">
+    <!--  <h1 class="h3 mb-3 font-weight-normal">{{ appname }}</h1>-->
+      <a href="{% url 'signup' %}" class="btn btn-space btn-lg btn-primary">Sign up</a>
+      <a href="{% url 'login' %}" class="btn btn-space btn-lg btn-primary">Log in</a>
+      </div>
+      </form>
+  		{% endif %}
+  	</ul>
+  	<br>
+
+  	{% block content %}
+  	{% endblock %}
+    </div>
+  </div>
+	<br>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="{% static 'mainapp/scripts.js' %}"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+	<!--<script src="{% static 'mainapp/file_upload.js' %}"></script>-->
+</body>
+</html>
