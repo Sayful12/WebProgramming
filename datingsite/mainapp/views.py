@@ -6,11 +6,18 @@ from mainapp.models import Account, Profile
 from django.contrib.auth.hashers import make_password
 from django.db import IntegrityError
 
+import datetime as D
+
+
 appname = 'Dating App'
 
 def index(request):
     context = { 'appname': appname }
     return render(request,'mainapp/index.html',context)
+
+def messages(request):
+    context = { 'appname': appname }
+    return render(request,'mainapp/messages.html',context)
 
 def signup(request):
     context = { 'appname': appname }
